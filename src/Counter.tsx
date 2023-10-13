@@ -1,25 +1,41 @@
-import React, { useReducer } from "react";
+import { useReducer } from "react";
+import "./App";
 
 function Counter() {
-  const counterReducer = (currState, action) => {
+  const counterReducer = (currentState, action) => {
     switch (action.type) {
       case "INCREMENT":
-        return { count: currState.count + 1 };
+        return { count: currentState.count + 1 };
       case "DECREMENT":
-        return { count: currState.count - 1 };
+        return { count: currentState.count - 1 };
       default:
-        return currState;
+        return currentState;
     }
   };
+
   const [state, reducer] = useReducer(counterReducer, { count: 0 });
   console.log(state);
   return (
-    <div>
-      <button onClick={() => reducer({ type: "INCREMENT" })}>Increment</button>
+    <div className="main">
+      <div className="body-main">
+        <button
+          onClick={() => reducer({ type: "INCREMENT" })}
+          className="increment"
+        >
+          Increment
+        </button>
 
-      <button onClick={() => reducer({ type: "DECREMENT" })}>Decrement</button>
+        <button
+          onClick={() => reducer({ type: "DECREMENT" })}
+          className="decrement"
+        >
+          Decrement
+        </button>
 
-      <div>{state.count}</div>
+        <div>
+          <h3>Counter: {state.count}</h3>
+        </div>
+      </div>
     </div>
   );
 }
