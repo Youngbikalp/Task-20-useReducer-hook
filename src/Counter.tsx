@@ -14,12 +14,16 @@ function Counter() {
   const [state, reducer] = useReducer(counterReducer, { count: 0 });
   console.log(state);
   return (
-    <div>
-      <button onClick={() => reducer({ type: "INCREMENT" })}>Increment</button>
-
-      <button onClick={() => reducer({ type: "DECREMENT" })}>Decrement</button>
-
-      <div>{state.count}</div>
+    <div className="main">
+      <div className="contentBox">
+        <button onClick={() => reducer({ type: "INCREMENT" })}>
+          Increment
+        </button>
+        <div className="resultBox">{state.count}</div>
+        <button onClick={() => reducer({ type: "DECREMENT" })}>
+          Decrement
+        </button>
+      </div>
     </div>
   );
 }
